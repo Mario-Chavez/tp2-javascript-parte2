@@ -1,44 +1,25 @@
 /* 
-2-  Crear un script que solicite al usuario mediante un prompt el nombre
- de ciudades y almacenarlas en un arreglo, cuando el usuario selecciona 
- cancelar se debe mostrar el arreglo generado, luego realizar las 
- siguientes acciones:
-
-Mostrar la longitud del arreglo.
-Mostrar en el documento web los ítems de las posiciones primera, tercera y
- última.
-Añade en última posición la ciudad de París.
-Escribe por pantalla el elemento que ocupa la segunda posición.
-Sustituye el elemento que ocupa la segunda posición por la ciudad de
- 'Barcelona'.
-
+3- Escribir un script que simule el lanzamiento de dos dados. Hacer uso de la función
+ Math.random para obtener números aleatorios entre 1 y 6 para cada uno de
+los lanzamientos de los dados. Sumar el resultado de lanzar dos dados y
+anotar en un array el número de apariciones de dicha suma, repitiendo 50
+ veces esta operación.
 
 */
 
-let ciudades = [];
-while (true) {
-    let ciudad = prompt("Introduce el nombre de una ciudad:");
+let suma = [];
 
-    if (ciudad === null) {
-        break;
-    } else {
-        ciudades.push(ciudad);
-    }
-}
-function Mostrarciudades(ciudades) {
-    document.write(`<ul>`);
-    ciudades.push("Paris");
-    ciudades.splice(1, 0, "Barcelona");
+while (suma.length < 50) {
+    let dado1 = Math.floor(Math.random() * 6);
+    let dado2 = Math.floor(Math.random() * 6);
 
-    ciudades.map((ciudad) => document.write(`<li>${ciudad}</li>`));
-
-    document.write(`</ul>`);
-    document.write(`las ciudades que introdujiste son ${ciudades.length} </br>`);
-    document.write(`la primera ciuidad que dijiste es  ${ciudades[0]} </br>`);
-    document.write(`la tercer ciuidad que dijiste es  ${ciudades[2]} </br>`);
-    document.write(
-        `la ultima ciuidad que dijiste es  ${ciudades[ciudades.length - 1]} </br>`
-    );
+    let sumaDeDados = dado1 + dado2;
+    suma.push(sumaDeDados);
 }
 
-Mostrarciudades(ciudades);
+function MostrarArray(suma) {
+    document.write(`La suma de cada aperaciones es = `);
+    suma.map((num) => document.write(`<li>${num}</li>`));
+}
+
+MostrarArray(suma);
